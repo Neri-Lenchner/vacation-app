@@ -1,8 +1,10 @@
 import React, {JSX, useEffect, useRef, useState} from 'react';
 import './AdminForm.css';
+import {AxiosError} from 'axios';
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {Vacation} from "../../models/vacation.model";
+import {ErrorModel} from "../../models/error.model";
 import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
 import {appConfig} from "../../utils/app-config";
@@ -53,7 +55,9 @@ function AdminForm(): JSX.Element {
             navigate("/vacations");
         }
         catch (error) {
-            Swal.fire({ icon: "error", title: "Error", text: "Failed to add vacation" });
+            const myErr = error as AxiosError;
+            const message: string = (myErr.response?.data as ErrorModel)?.error;
+            Swal.fire({ icon: "error", title: "Error", text: message || "Failed to add vacation" });
         }
     }
 
@@ -64,7 +68,9 @@ function AdminForm(): JSX.Element {
             navigate("/vacations");
         }
         catch (error) {
-            Swal.fire({ icon: "error", title: "Error", text: "Failed to update vacation" });
+            const myErr = error as AxiosError;
+            const message: string = (myErr.response?.data as ErrorModel)?.error;
+            Swal.fire({ icon: "error", title: "Error", text: message || "Failed to update vacation" });
         }
     }
 

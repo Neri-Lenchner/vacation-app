@@ -1,5 +1,7 @@
 import React, {JSX ,useEffect, useState} from "react";
+import {AxiosError} from 'axios';
 import {Vacation} from '../../models/vacation.model';
+import {ErrorModel} from '../../models/error.model';
 import {vacationStore} from '../../state/vacation-state';
 import {followersStore} from "../../state/followers-state";
 import {authStore} from "../../state/auth-state";
@@ -153,11 +155,13 @@ function VacationList(): JSX.Element {
                 text: "Your file has been deleted.", 
                 icon: "success" 
             });
-          } catch {
-              Swal.fire({ 
-                icon: "error", 
-                title: "Error", 
-                text: "Failed to delete vacation" 
+          } catch (error) {
+              const myErr = error as AxiosError;
+              const message: string = (myErr.response?.data as ErrorModel)?.error;
+              Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: message || "Failed to delete vacation"
             });
           }
       }

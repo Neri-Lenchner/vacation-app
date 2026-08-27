@@ -7,7 +7,8 @@ export class Vacation {
         public endDate: Date | string,
         public cost : number,
         public imageName?: string,
-        public id?: number
+        public id?: number,
+        public isSeed?: boolean
     ) {}
         
 }

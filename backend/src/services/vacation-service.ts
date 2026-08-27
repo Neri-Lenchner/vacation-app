@@ -1,7 +1,7 @@
 import {ResultSetHeader} from "mysql2";
 import {dal} from "../utils/dal";
 import {Vacation} from "../models/vacation.model";
-import {ResourceNotFound} from "../models/client-error";
+import {ResourceNotFound, ForbiddenError} from "../models/client-error";
 import {appConfig} from "../utils/app-config";
 import {uploadImageService} from "./upload-image-service";
 
@@ -62,6 +62,9 @@ class VacationService {
     public async updateVacation(id: number, vacation: Vacation): Promise<Vacation> {
         vacation.validate(true);
         const vacationBeforeUpdate: Vacation = await this.getVacationById(id);
+        if (vacationBeforeUpdate.isSeed) {
+            throw new ForbiddenError("This vacation is baseline demo data and cannot be edited. Add a new vacation to try the full admin features!");
+        }
         if (!vacation.imageName) {
             vacation.imageName = vacationBeforeUpdate.imageName;
         }
@@ -78,6 +81,9 @@ class VacationService {
 
     public async deleteVacation(id: number): Promise<void> {
         const vacationBeforeDelete: Vacation = await this.getVacationById(id);
+        if (vacationBeforeDelete.isSeed) {
+            throw new ForbiddenError("This vacation is baseline demo data and cannot be deleted. Add a new vacation to try the full admin features!");
+        }
         if (vacationBeforeDelete.imageName) uploadImageService.deleteImage(vacationBeforeDelete.imageName);
         const sql = "DELETE FROM all_vacations WHERE id = ?";
         const result = await dal.execute(sql, [id]) as ResultSetHeader;

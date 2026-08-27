@@ -9,6 +9,7 @@ export class Vacation {
     public cost: number;
     public imageName?: string;
     public id?: number;
+    public isSeed?: boolean;
 
     constructor(vacation: Vacation) {
         this.destination = vacation.destination;
@@ -18,6 +19,7 @@ export class Vacation {
         this.cost = vacation.cost;
         this.imageName = vacation.imageName;
         this.id = vacation.id;
+        this.isSeed = vacation.isSeed;
     }
 
     private static addValidationSchema = Joi.object({
@@ -32,7 +34,8 @@ export class Vacation {
         endDate: Joi.date().required().greater(Joi.ref('startDate')),
         cost: Joi.number().required().positive().max(10000),
         imageName: Joi.string().optional(),
-        id: Joi.number().optional().positive()
+        id: Joi.number().optional().positive(),
+        isSeed: Joi.boolean().optional()
     });
 
     private static updateValidationSchema = Joi.object({
@@ -42,7 +45,8 @@ export class Vacation {
         endDate: Joi.date().required().greater(Joi.ref('startDate')),
         cost: Joi.number().required().positive().max(10000),
         imageName: Joi.string().optional(),
-        id: Joi.number().optional().positive()
+        id: Joi.number().optional().positive(),
+        isSeed: Joi.boolean().optional()
     });
 
     public validate(isUpdate = false): void {
