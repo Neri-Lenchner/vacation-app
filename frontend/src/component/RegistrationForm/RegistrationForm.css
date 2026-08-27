@@ -1,0 +1,12 @@
+.form-admin-demo-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.form-admin-demo-note {
+    max-width: 300px;
+    text-align: center;
+    font-style: italic;
+}

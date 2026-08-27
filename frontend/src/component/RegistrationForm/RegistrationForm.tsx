@@ -17,7 +17,6 @@ function RegistrationForm(): JSX.Element {
 
     async function registerUser(user: User): Promise<void> {
         try {
-            user.isAdmin = false;
             await authService.register(user);
             reset();
             navigate("/vacations");
@@ -78,6 +77,14 @@ function RegistrationForm(): JSX.Element {
                     }
                 )}/>
                 {formState.errors.password && <p>{formState.errors.password?.message}</p>}
+                <label className="form-input-message form-admin-demo-label">
+                    <input type="checkbox" {...register("isAdmin")} />
+                    {" "}Register as Admin (demo only)
+                </label>
+                <div className="form-input-message form-admin-demo-note">
+                    This app is a portfolio demo — check this box to give your account admin
+                    access, so you can see the extra admin-only features (managing vacations, etc.).
+                </div>
                 <button className="form-button form-element" type="submit">
                     Register
                 </button>

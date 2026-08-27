@@ -13,7 +13,7 @@ class AuthService {
         user.validate();
         const isEmailExist: Boolean = await this.validateEmail(user.email);
         if (isEmailExist) throw new ValidationError("Email already taken");
-        user.isAdmin = false;
+        user.isAdmin = Boolean(user.isAdmin);
         user.password = await securityService.hash(user.password);
         const sql = "INSERT INTO users (firstName, lastName, email, password, isAdmin) VALUES (?, ?, ?, ? ,?)";
         const result = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.isAdmin]) as ResultSetHeader;
