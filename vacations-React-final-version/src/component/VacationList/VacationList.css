@@ -1,0 +1,22 @@
+.vacation-list-container {
+    font-family: "Raleway", Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: transparent;
+    padding: 40px;
+}
+
+.Vacation-list-checkbox-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 50px;
+}
+
+.Vacation-list-checkbox-container,
+.vacation-list-container {
+    background-color: transparent;
+}

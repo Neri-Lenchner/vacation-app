@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    min-width: 1450px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+header {
+    height: 20vh;
+    min-height: 145px;
+    width: 100%;
+}
+
+main {
+    background-color: #e4e4e4;
+    background-image: url('../public/ship-image-no-background.png');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    height: calc(100vh - 20vh);
+    overflow-y: auto;
+    padding-bottom: 200px;
+}
+
+/* GENERAL SETTINGS */
+
+.general-button {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color:  #181860;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.general-button:hover {
+    background-color:  blue;
+
+}
+
+/* FORM CSS */
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+.form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-headline {
+    color: #181860;
+}
+
+.form-element {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+textarea.form-element {
+    height: 255px;
+    resize: none;
+}
+
+.form-headline,
+.form-date,
+.form button {
+    height: 40px;
+}
+
+.form-add-content {
+    height: 120px;
+    resize: none;
+}
+
+.form-button, .swal2-confirm {
+    background-color: #181860;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.form-button:hover, .swal2-confirm:hover {
+    background-color: blue;
+}
+
+.swal2-popup {
+    font-family: "Raleway", sans-serif;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: red !important;
+    color: red !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+    border-color: green !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-line-tip,
+.swal2-icon.swal2-success .swal2-success-line-long {
+    background-color: green !important;
+}
+
+.form-input-price,
+.form-input-message {
+    align-self: start;
+    font-size: 14px;
+    color: gray;
+}
+
+.form-file {
+    height: 40px;
+}
+
+.form-bottom-message {
+    align-self: center;
+}
+
+.form-link {
+    color: blue;
+    text-decoration: none;
+}
+
+.form-delete {
+    color: gray;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.form-delete:hover {
+    background-color:  lightgray;
+    color: black;
+}
+
+.form-split {
+    display: flex;
+}
+
+.form-split-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-split-1,
+.form-split-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.form-split-2 {
+
+}
+
+/* FORM END */

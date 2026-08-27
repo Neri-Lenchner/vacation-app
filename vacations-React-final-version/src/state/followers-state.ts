@@ -1,0 +1,49 @@
+import {configureStore} from "@reduxjs/toolkit";
+import {Follower} from "../models/follower.model";
+import {DestinationAndFollowersCountModel} from "../models/destination-and-followers-count.model";
+
+
+export class FollowersState {
+    currentUserFollowedVacations: Follower[] = [];
+    followersCountList: DestinationAndFollowersCountModel[] = [];
+}
+
+export enum FollowerActionType {
+    GetCurrentUserFollowedVacations = "GetCurrentUserFollowedVacations",
+    GetFollowersCountList = "GetFollowersCountList",
+    AddFollower = "AddFollower",
+    DeleteFollower = "DeleteFollower",
+}
+
+export interface FollowerAction {
+    type: FollowerActionType,
+    payload: any;
+}
+
+export function followersReducer(followersState: FollowersState = new FollowersState(), action: FollowerAction): FollowersState {
+
+    const newState = {...followersState}
+    newState.currentUserFollowedVacations = [...newState.currentUserFollowedVacations];
+    newState.followersCountList = [...newState.followersCountList];
+
+    switch (action.type) {
+        case FollowerActionType.GetCurrentUserFollowedVacations:
+            newState.currentUserFollowedVacations = action.payload;
+            break;
+        case FollowerActionType.GetFollowersCountList:
+            newState.followersCountList = action.payload;
+            break;
+        case FollowerActionType.AddFollower:
+            newState.currentUserFollowedVacations.push(action.payload);
+            break;
+        case FollowerActionType.DeleteFollower:
+            const indexToDelete: number = newState.currentUserFollowedVacations.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
+            newState.currentUserFollowedVacations.splice(indexToDelete, 1);
+            break;
+    }
+
+    return newState;
+}
+
+
+export const followersStore = configureStore({ reducer: followersReducer });

@@ -1,0 +1,56 @@
+import {User} from "../models/user.model";
+import {jwtDecode} from "jwt-decode";
+import {configureStore} from "@reduxjs/toolkit";
+import {UserWrapper} from "../models/user-wrapper.model";
+
+
+export class AuthState {
+    user: User | null = null;
+    token: string | null = null;
+
+    constructor() {
+        const tokenFromLocalStorage: string | null = localStorage.getItem("token");
+        if (tokenFromLocalStorage) {
+            this.token = tokenFromLocalStorage;
+            const userWrapper: UserWrapper = jwtDecode(tokenFromLocalStorage);
+            this.user = userWrapper.user;
+        }
+    }
+
+}
+
+export enum AuthActionType {
+    Register = "Register",
+    Login = "Login",
+    Logout = "Logout",
+}
+
+export interface AuthAction {
+    type: AuthActionType,
+    payload: any;
+}
+
+export function authReducer(authState: AuthState = new AuthState(), action: AuthAction): AuthState {
+
+    const newState = {...authState}
+
+    switch (action.type) {
+        case AuthActionType.Register:
+        case AuthActionType.Login:
+            const token: any = action.payload;
+            newState.token = token;
+            const userWrapper: UserWrapper = jwtDecode(token);
+            newState.user = userWrapper.user;
+            localStorage.setItem("token", token);
+            break;
+        case AuthActionType.Logout:
+            localStorage.removeItem("token");
+            newState.token = null;
+            newState.user = null;
+            break;
+    }
+
+    return newState;
+}
+
+export const authStore = configureStore({ reducer: authReducer });

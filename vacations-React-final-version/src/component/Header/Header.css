@@ -1,0 +1,91 @@
+.header {
+    background: linear-gradient(90deg, #181860, #050535);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    min-height: 145px;
+    z-index: 10;
+}
+
+.header-site-name {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-top: 40px;
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-size: 70px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.header-button-line {
+    display: flex;
+    gap: 50px;
+}
+
+.header-headline {
+    margin-top: 20px;
+    font-size: 40px;
+    color: yellow;
+}
+
+.header-headline span {
+    font-size: 50px;
+    color: white;
+}
+
+.header-headline,
+.header-button-line {
+    margin-left: 20px;
+}
+
+.header-button {
+    height: 20px;
+    text-decoration: none;
+    color: yellow;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-family: "Raleway";
+}
+
+.header-button:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.header-js-icon {
+    margin-right: 5px;
+}
+
+.header-button-line-container {
+    height: 50px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-plain-image {
+    position: absolute;
+    top: 35px;
+    right: 85px;
+    height: 150px;
+}
+
+.header-balloon-image {
+    position: absolute;
+    top: 0;
+    left: 420px;
+    height: 100px;
+    z-index: -20;
+}

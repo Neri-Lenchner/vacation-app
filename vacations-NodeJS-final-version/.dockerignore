@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+uploads/
+.idea/
+*.log
+npm-debug.log*

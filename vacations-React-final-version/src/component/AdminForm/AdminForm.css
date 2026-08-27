@@ -1,0 +1,28 @@
+.admin-form-img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.form-cancel-button, .swal2-cancel {
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-cancel-button {
+    width: 300px;
+}
+
+.form-cancel-button:hover, .swal2-cancel:hover {
+    color: black !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+}
