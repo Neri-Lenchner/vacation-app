@@ -5,8 +5,8 @@ A full-stack vacations management app built with React, Node.js/Express, and MyS
 ## Project Structure
 
 ```
-├── vacations-NodeJS-final-version/   # Backend (Express + TypeScript)
-├── vacations-React-final-version/    # Frontend (React + TypeScript)
+├── backend/                     # Backend (Express + TypeScript)
+├── frontend/                    # Frontend (React + TypeScript)
 ├── db/
 │   └── init.sql                # Database schema & seed data
 ├── docker-compose.yml
@@ -63,7 +63,7 @@ Dev setup with hot reload — any file change is reflected instantly without reb
 ### Backend
 
 1. ```bash
-   cd vacations-NodeJS-final-version
+   cd backend
    npm install
    ```
 
@@ -96,7 +96,7 @@ Dev setup with hot reload — any file change is reflected instantly without reb
 ### Frontend
 
 1. ```bash
-   cd vacations-React-final-version
+   cd frontend
    npm install
    ```
 

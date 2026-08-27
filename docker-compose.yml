@@ -21,7 +21,7 @@ services:
       retries: 10
 
   backend:
-    build: ./vacations-NodeJS-final-version
+    build: ./backend
     container_name: vacations-backend-dev
     restart: unless-stopped
     environment:
@@ -35,14 +35,14 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - ./vacations-NodeJS-final-version:/app
+      - ./backend:/app
       - backend_modules:/app/node_modules
     depends_on:
       db:
         condition: service_healthy
 
   frontend:
-    build: ./vacations-React-final-version
+    build: ./frontend
     container_name: vacations-frontend-dev
     restart: unless-stopped
     environment:
@@ -52,7 +52,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./vacations-React-final-version:/app
+      - ./frontend:/app
       - frontend_modules:/app/node_modules
     depends_on:
       - backend
