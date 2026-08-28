@@ -44,7 +44,7 @@ function AdminForm(): JSX.Element {
         }
 
         const formContainerElement: HTMLDivElement | null =  container.current;
-        if (formContainerElement) formContainerElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (formContainerElement) formContainerElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     }, [params.id, reset]);
 

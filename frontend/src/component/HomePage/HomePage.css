@@ -18,10 +18,48 @@
     border-radius: 10px;
     align-self: center;
     width: 700px;
+    max-width: 90%;
     font-size: 30px;
     color: white;
     text-align: center;
     background: rgba(0, 0, 139, 0.4);
+}
+
+@media (max-width: 900px) {
+    .home-page-container {
+        height: auto;
+        min-height: calc(100vh - 145px);
+        padding: 30px 16px;
+    }
+
+    .home-page-text {
+        padding: 16px 24px;
+        font-size: 22px;
+    }
+
+    .boat {
+        width: 200px;
+        height: 180px;
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-page-text {
+        font-size: 18px;
+        padding: 14px 18px;
+    }
+
+    .boat {
+        width: 140px;
+        height: 126px;
+    }
+
+    .sun {
+        width: 80px;
+        height: 80px;
+    }
 }
 
 /*/////////////////////////////////////////////////*/

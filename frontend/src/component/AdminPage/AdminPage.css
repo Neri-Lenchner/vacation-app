@@ -12,6 +12,10 @@
     margin: 20px;
 }
 
+.admin-page-container {
+    padding: 0 16px;
+}
+
 .admin-page-container button {
     font-size: 20px;
     background-color: #181860;
@@ -22,7 +26,8 @@
     border-radius: 5px;
     transition: 0.2s;
     padding: 10px;
-    width: 480px
+    width: 480px;
+    max-width: 100%;
 }
 
 .admin-page-container button:hover {

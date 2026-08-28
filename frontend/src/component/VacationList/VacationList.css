@@ -12,6 +12,7 @@
 .Vacation-list-checkbox-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 50px;
     padding-top: 50px;
 }
@@ -19,4 +20,15 @@
 .Vacation-list-checkbox-container,
 .vacation-list-container {
     background-color: transparent;
+}
+
+@media (max-width: 768px) {
+    .vacation-list-container {
+        padding: 24px 16px;
+    }
+
+    .Vacation-list-checkbox-container {
+        gap: 20px 30px;
+        padding-top: 24px;
+    }
 }

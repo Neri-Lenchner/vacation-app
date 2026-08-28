@@ -1,4 +1,4 @@
-import {JSX, useEffect, useState} from 'react';
+import {JSX, useEffect, useRef, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {Unsubscribe} from 'redux';
 import {AuthActionType, authStore} from '../../state/auth-state';
@@ -21,6 +21,8 @@ function Header(): JSX.Element {
     );
 
     const [user, setUser] = useState<User | null>(authStore.getState().user);
+    const [menuOpen, setMenuOpen] = useState<boolean>(false);
+    const headerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect((): Unsubscribe => {
         const unsubscribe: Unsubscribe = authStore.subscribe((): void => {
@@ -36,7 +38,22 @@ function Header(): JSX.Element {
         return (): void => unsubscribe();
     }, []);
 
+    useEffect((): (() => void) => {
+        function handleClickOutside(event: MouseEvent): void {
+            if (menuOpen && headerRef.current && !headerRef.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return (): void => document.removeEventListener('mousedown', handleClickOutside);
+    }, [menuOpen]);
+
+    function closeMenu(): void {
+        setMenuOpen(false);
+    }
+
     function logOut(): void {
+        closeMenu();
         navigate('/home');
         authStore.dispatch({
             type: AuthActionType.Logout, payload: null

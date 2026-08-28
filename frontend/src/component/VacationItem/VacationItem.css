@@ -194,3 +194,13 @@
     top: 3px;
     left: 5px;
 }
+
+@media (max-width: 480px) {
+    .vacation-item-container {
+        width: min(320px, calc(100vw - 64px));
+    }
+
+    .vacation-item-price {
+        width: 100%;
+    }
+}
