@@ -17,7 +17,7 @@ export enum FollowerActionType {
 
 export interface FollowerAction {
     type: FollowerActionType,
-    payload: any;
+    payload: unknown;
 }
 
 export function followersReducer(followersState: FollowersState = new FollowersState(), action: FollowerAction): FollowersState {
@@ -28,16 +28,16 @@ export function followersReducer(followersState: FollowersState = new FollowersS
 
     switch (action.type) {
         case FollowerActionType.GetCurrentUserFollowedVacations:
-            newState.currentUserFollowedVacations = action.payload;
+            newState.currentUserFollowedVacations = action.payload as Follower[];
             break;
         case FollowerActionType.GetFollowersCountList:
-            newState.followersCountList = action.payload;
+            newState.followersCountList = action.payload as DestinationAndFollowersCountModel[];
             break;
         case FollowerActionType.AddFollower:
-            newState.currentUserFollowedVacations.push(action.payload);
+            newState.currentUserFollowedVacations.push(action.payload as Follower);
             break;
         case FollowerActionType.DeleteFollower:
-            const indexToDelete: number = newState.currentUserFollowedVacations.findIndex((follower: Follower  ): boolean => follower.id === action.payload);
+            const indexToDelete: number = newState.currentUserFollowedVacations.findIndex((follower: Follower  ): boolean => follower.id === (action.payload as number));
             newState.currentUserFollowedVacations.splice(indexToDelete, 1);
             break;
     }

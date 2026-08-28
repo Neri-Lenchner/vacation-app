@@ -16,7 +16,7 @@ export enum VacationActionType {
 
 export interface VacationAction {
     type: VacationActionType,
-    payload: any;
+    payload: unknown;
 }
 
 export function vacationReducer(vacationState: VacationState = new VacationState(), action: VacationAction): VacationState {
@@ -26,20 +26,21 @@ export function vacationReducer(vacationState: VacationState = new VacationState
 
     switch (action.type) {
         case VacationActionType.GetVacationList:
-            newState.vacationList = action.payload;
+            newState.vacationList = action.payload as Vacation[];
             break;
         case VacationActionType.GetTotalVacations:
-            newState.totalVacations = action.payload;
+            newState.totalVacations = action.payload as number;
             break;
         case VacationActionType.AddVacation:
-            newState.vacationList.push(action.payload);
+            newState.vacationList.push(action.payload as Vacation);
             break;
         case VacationActionType.UpdateVacation:
-            const indexToUpdate: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === action.payload.id);
-            newState.vacationList[indexToUpdate] = action.payload;
+            const updatedVacation = action.payload as Vacation;
+            const indexToUpdate: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === updatedVacation.id);
+            newState.vacationList[indexToUpdate] = updatedVacation;
             break;
         case VacationActionType.DeleteVacation:
-            const indexToDelete: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === action.payload);
+            const indexToDelete: number = newState.vacationList.findIndex((vacation: Vacation): boolean => vacation.id === (action.payload as number));
             newState.vacationList.splice(indexToDelete, 1);
             break;
     }

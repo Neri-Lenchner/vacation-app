@@ -139,8 +139,8 @@ function Header(): JSX.Element {
             <div className="header-site-name">
                TraveLentz
             </div>
-            <img src="/plain-image-no-background.png" className="header-plain-image" />
-            <img src="/balloon-image-no-background.png" className="header-balloon-image" />
+            <img src="/plain-image-no-background.png" className="header-plain-image" alt="" />
+            <img src="/balloon-image-no-background.png" className="header-balloon-image" alt="" />
         </div>
     );
 }

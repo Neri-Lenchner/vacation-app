@@ -27,7 +27,7 @@ export enum AuthActionType {
 
 export interface AuthAction {
     type: AuthActionType,
-    payload: any;
+    payload: unknown;
 }
 
 export function authReducer(authState: AuthState = new AuthState(), action: AuthAction): AuthState {
@@ -37,7 +37,7 @@ export function authReducer(authState: AuthState = new AuthState(), action: Auth
     switch (action.type) {
         case AuthActionType.Register:
         case AuthActionType.Login:
-            const token: any = action.payload;
+            const token = action.payload as string;
             newState.token = token;
             const userWrapper: UserWrapper = jwtDecode(token);
             newState.user = userWrapper.user;
