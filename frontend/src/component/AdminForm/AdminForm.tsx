@@ -7,7 +7,6 @@ import {Vacation} from "../../models/vacation.model";
 import {ErrorModel} from "../../models/error.model";
 import {vacationStore} from "../../state/vacation-state";
 import {vacationService} from "../../services/vacation-service";
-import {appConfig} from "../../utils/app-config";
 import Swal from 'sweetalert2';
 
 
@@ -179,7 +178,7 @@ function AdminForm(): JSX.Element {
                         />
                         <div className="admin-form-image-container">
                             <img className="admin-form-img" alt="vacation preview" src={ previewImage || (vacationToUpdate?.imageName
-                                ? appConfig.uploadsAddress + vacationToUpdate.imageName
+                                ? vacationToUpdate.imageName
                                 : "/default-pic.jpg")} />
                         </div>
                         <div className="form-split-buttons">

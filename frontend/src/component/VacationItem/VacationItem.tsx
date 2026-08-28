@@ -4,7 +4,6 @@ import {Follower} from '../../models/follower.model';
 import {Vacation} from '../../models/vacation.model';
 import {User} from '../../models/user.model';
 import {DestinationAndFollowersCountModel} from "../../models/destination-and-followers-count.model";
-import {appConfig} from "../../utils/app-config";
 import {followersService} from '../../services/followers-service';
 import { CiCalendarDate } from "react-icons/ci";
 import Swal from 'sweetalert2';
@@ -70,7 +69,7 @@ function VacationItem({vacation, currentUserFollowedVacations, destinationAndFol
         <div className="vacation-item-container">
             <div className="vacation-item-image-container">
                 <img className="vacation-item-img" alt={vacation.destination} src={vacation.imageName
-                    ? appConfig.uploadsAddress + vacation.imageName
+                    ? vacation.imageName
                     : "/default-pic.jpg"
                 } />
             </div>

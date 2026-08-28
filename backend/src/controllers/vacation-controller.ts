@@ -24,7 +24,7 @@ class VacationController {
     public async addVacation(request: Request, response: Response): Promise<void> {
         const vacationJSON: any = JSON.parse(request.body.vacation);
         const vacation: Vacation = new Vacation(vacationJSON);
-        vacation.imageName = request.file?.filename;
+        vacation.imageName = request.file?.path;
         const vacationFromDB: Vacation = await vacationService.addVacation(vacation);
         response.status(StatusCode.Created).json(vacationFromDB);
     }
@@ -67,8 +67,8 @@ class VacationController {
         const id: number = +request.params.id;
         const vacationJSON: any = JSON.parse(request.body.vacation);
         const vacation: Vacation = new Vacation(vacationJSON);
-        if (request.file?.filename) {
-            vacation.imageName = request.file.filename;
+        if (request.file?.path) {
+            vacation.imageName = request.file.path;
         }
         const vacationFromDB: Vacation = await vacationService.updateVacation(id, vacation);
         response.json(vacationFromDB);
