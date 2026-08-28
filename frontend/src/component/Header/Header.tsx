@@ -61,31 +61,35 @@ function Header(): JSX.Element {
     }
 
     return (
-        <div className="header">
+        <div className="header" ref={headerRef}>
             {userName &&
                 <div className="header-headline">
                     Hello <span>{userName}</span>
                 </div>
             }
-            <div className="header-button-line-container">
+            <button
+                className="header-hamburger"
+                onClick={(): void => setMenuOpen(open => !open)}
+                aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div className={`header-button-line-container${menuOpen ? ' header-button-line-container--open' : ''}`}>
                 <div className="header-button-line">
                     <NavLink
                         to="/home"
-                        className="header-button">
+                        className="header-button"
+                        onClick={closeMenu}>
                         <AiFillHome className="header-js-icon" />
                         Home
                     </NavLink>
                     {userName
                         ? <>
-                            <button
-                                onClick={logOut}
-                                className="header-button">
-                                <RiLogoutBoxFill className="header-js-icon"/>
-                                Logout
-                            </button>
                             <NavLink
                                 className="header-button"
-                                to="/vacations">
+                                to="/vacations"
+                                onClick={closeMenu}>
                                 <LuLayoutList className="header-js-icon"/>
                                 Vacations
                             </NavLink>
@@ -93,29 +97,39 @@ function Header(): JSX.Element {
                                 ? <>
                                     <NavLink
                                         className="header-button"
-                                        to="/admin-form/add-vacation">
+                                        to="/admin-form/add-vacation"
+                                        onClick={closeMenu}>
                                         <MdNoteAdd className="header-js-icon"/>
                                         Add Vacation
                                     </NavLink>
                                     <NavLink
                                         className="header-button"
-                                        to="/charts">
+                                        to="/charts"
+                                        onClick={closeMenu}>
                                         <IoBarChartSharp className="header-js-icon"/>
                                         Charts
                                     </NavLink>
                                     <NavLink
                                         className="header-button"
-                                        to="/admin-page">
+                                        to="/admin-page"
+                                        onClick={closeMenu}>
                                         <FaFileCsv className="header-js-icon"/>
                                         CSV-Download
                                     </NavLink>
                                   </>
                                 : <div></div>
                             }
+                            <button
+                                onClick={logOut}
+                                className="header-button">
+                                <RiLogoutBoxFill className="header-js-icon"/>
+                                Logout
+                            </button>
                         </>
                         : <NavLink
                             className="header-button"
-                            to="/login-form">
+                            to="/login-form"
+                            onClick={closeMenu}>
                             <RiLoginBoxFill className="header-js-icon"/>
                             Login
                         </NavLink>

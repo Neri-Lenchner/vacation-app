@@ -15,6 +15,10 @@ html, body {
     overflow: hidden;
 }
 
+#root {
+    height: 100%;
+}
+
 .App {
     display: flex;
     flex-direction: column;
@@ -44,6 +48,7 @@ main {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding-bottom: 200px;
 }
 
