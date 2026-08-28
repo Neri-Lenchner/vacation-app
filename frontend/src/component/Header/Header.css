@@ -115,7 +115,7 @@
 
 @media (max-width: 900px) {
     .header {
-        min-height: 145px;
+        min-height: 115px;
         padding: 16px 12px;
         align-items: center;
         gap: 12px;
