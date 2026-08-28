@@ -36,7 +36,7 @@ class VacationService {
     }
 
     public async getVacationCount(): Promise<number> {
-        const sql = "SELECT COUNT(*) AS total FROM vacations.all_vacations;";
+        const sql = "SELECT COUNT(*) AS total FROM all_vacations;";
         const result = await dal.execute(sql) as { total: number }[];
         return Number(result[0].total);
     }
